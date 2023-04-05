@@ -16,4 +16,5 @@
   ansible.builtin.include_tasks: includes/configure.yaml
   loop: "{{ found_directories.files }}"
   loop_control:
-    label: "{{ item.path | basename }}"
+    loop_var: file
+    label: "{{ file.path | basename }}"
