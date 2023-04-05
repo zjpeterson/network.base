@@ -2,7 +2,7 @@
 authors:
   - Rohit Thakur (@rohitthakur2590)
 dependencies:
-  "ansible.netcommon": ">=4.1.0"
+  "ansible.netcommon": ">=4.1.0,<5.0.0"
   "ansible.utils": '>=2.7.0'
 license_file: LICENSE
 name: base
