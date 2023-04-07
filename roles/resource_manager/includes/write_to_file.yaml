@@ -20,16 +20,16 @@
 
 - name: Write each resource to a file
   ansible.builtin.copy:
-    content: "{{ {item: result['gathered']} | to_nice_yaml }}"
-    dest: "{{ inventory_directory }}/host_vars/{{ inventory_hostname }}/{{ item }}.yaml"
+    content: "{{ {resource_name: result['gathered']} | to_nice_yaml }}"
+    dest: "{{ inventory_directory }}/host_vars/{{ inventory_hostname }}/{{ resource_name }}.yaml"
   when:
     - result['gathered'] != {}
     - result['gathered'] != []
 
 - name: Write each empty resource to a file
   ansible.builtin.copy:
-    content: "{{ item }}:"
-    dest: "{{ inventory_directory }}/host_vars/{{ inventory_hostname }}/{{ item }}.yaml"
+    content: "{{ resource_name }}:"
+    dest: "{{ inventory_directory }}/host_vars/{{ inventory_hostname }}/{{ resource_name }}.yaml"
   when:
     - result['gathered'] == {} or result['gathered'] == []
     - persist_empty is true
